@@ -16,10 +16,15 @@ The application is a Spring Boot based application with additional librairies su
 
 1. Clone the project 
 2. Unzip and go the root of project 
-3. Ignite the command (example for linux niche): 
+3. Ignite the commands (example for linux niche): 
 ```shell 
-./mvnw 
+./mvnw clean install
 ```
+and 
+```shell
+java -jar target/notebook-0.0.1-SNAPSHOT.jar
+```
+
 or execute in your favorite editor through the project execution shortcut.
 4. Submit a JSON object with a such a structure 
 ```json
@@ -29,6 +34,8 @@ where *pythoncode* is a python snippet, to the endpoint  **/execute** like this 
 ```shell
 curl -X POST  http://localhost:8080/execute  -d '{"code": "%python a=23 "}'
 ```
+
+
 You can also test with API test environment such as Postman.
 
 
