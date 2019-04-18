@@ -1,5 +1,7 @@
-package com.oracle.notebook.jsonparser;
+package com.oracle.notebook.interpreter;
 
+import com.oracle.notebook.model.ResultModel;
+import com.oracle.notebook.model.CodeModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oracle.notebook.grammar.NotebookBaseVisitor;
