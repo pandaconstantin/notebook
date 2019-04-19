@@ -40,6 +40,7 @@ public class NotebookInterpreter {
     private PythonInterpreter pythonInterpret;
     private String sessionID;
     private ResultModel resultJSON;
+    private String statement ;
 
     public NotebookInterpreter() {
 
@@ -75,7 +76,7 @@ public class NotebookInterpreter {
         if (isCorrectSnippet(snippetJson) == 0) {
             resultJSON = new ResultModel(resultPythonProcessing(codeModel.getCode(), session));
         } else {
-            resultJSON = new ResultModel("");
+            resultJSON = new ResultModel(resultPythonProcessing(codeModel.getCode(), session));
         }
 
         try {
@@ -89,14 +90,14 @@ public class NotebookInterpreter {
 
     /**
      * This method submit the expression to the Python interpreter
-     *
      * @param snippetcode
      * @param session
      * @return
      */
     public String resultPythonProcessing(String snippetcode, HttpSession session) {
+         
         try {
-            String statement = snippetcode.substring(snippetcode.indexOf(" ")).trim();
+             statement = snippetcode.substring(snippetcode.indexOf(" ")).trim();
             if (statement.contains("print")) {
                 statement = statement.substring(statement.indexOf(" ")).trim();
             }
@@ -113,6 +114,12 @@ public class NotebookInterpreter {
         return null;
     }
 
+    
+    /**
+     * Test the snippet if there is an error or not
+     * @param snippet
+     * @return 
+     */
     public int isCorrectSnippet(String snippet) {
         snippet = snippet.replace("\"", " ");
         CharStream charStream = CharStreams.fromString(snippet);
